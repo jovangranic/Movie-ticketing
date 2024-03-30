@@ -1,18 +1,19 @@
 package RVA.services;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 public interface CrudService<T> {
-	//<T> oznacava bilo koji tip obelezja (artikl, dobavljac...)
 	
 	List<T> getAll();
 	
 	boolean existsById(int id);
+	
+	Optional<T> findById(int id);
 	
 	T create (T t);
 	
 	Optional<T> update(T t, int id);
 	
 	void delete(int id);
-
 }
