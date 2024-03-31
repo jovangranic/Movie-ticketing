@@ -77,10 +77,10 @@ public class FilmControllerIntegrationTest {
 	
 	@Test
 	@Order(3)
-	void testGetFilmssByNaziv() {
+	void testGetFilmsByNaziv() {
 		String naziv = "The";
 		ResponseEntity<List<Film>> response = template.exchange(
-				"/artikl/naziv/" + naziv, HttpMethod.GET, null, new 
+				"/film/naziv/" + naziv, HttpMethod.GET, null, new 
 					ParameterizedTypeReference<List<Film>>() {});
 		
 		int statusCode = response.getStatusCode().value();

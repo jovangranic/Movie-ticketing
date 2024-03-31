@@ -96,8 +96,8 @@ class RezervacijaControllerIntegrationTest {
 	@Test
 	@Order(4)
 	void testGetRezervacijasBySala() {
-		long porudzbinaId = 1;
-		ResponseEntity<List<Rezervacija>> response = template.exchange("/rezervacija/sala/" + porudzbinaId, HttpMethod.GET, null,
+		long salaId = 1;
+		ResponseEntity<List<Rezervacija>> response = template.exchange("/rezervacija/sala/" + salaId, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Rezervacija>>(){});
 		int statusCode = response.getStatusCode().value();
 		List<Rezervacija> rezervacija =  response.getBody();

@@ -59,8 +59,8 @@ public class RezervacijaController {
 		return ResponseEntity.ok(rezervacija);
 	}
 	
-	@GetMapping("/rezervacija/cena_karte/{cena_karte}")
-	public ResponseEntity<?> getRezervacijasByCena_karte(@PathVariable double cena){
+	@GetMapping("/rezervacija/cena/{cena}")
+	public ResponseEntity<?> getRezervacijasByCena(@PathVariable double cena){
 		List<Rezervacija> rezervacija = service.getRezervacijasByCenaLessThan(cena);
 		if(rezervacija.isEmpty()) {
 			return ResponseEntity.status(404).body("Resources with Cena: " + cena + " do not exist!");
@@ -88,7 +88,7 @@ public class RezervacijaController {
 				" updated because it does not exist!");
 	}
 	
-	@DeleteMapping("/Rezervacija/id/{id}")
+	@DeleteMapping("/rezervacija/id/{id}")
 	public ResponseEntity<?> deleteRezervacija(@PathVariable int id ){
 		if(service.existsById(id)) {
 			service.delete(id);
@@ -98,7 +98,7 @@ public class RezervacijaController {
 				" deleted because it does not exist!");
 	}
 	
-	@GetMapping("/Rezervacija/film/{foreignKey}")
+	@GetMapping("/rezervacija/film/{foreignKey}")
 	public ResponseEntity<?> getRezervacijaByFilm(@PathVariable int foreignKey){
 		Optional<Film> film = filmService.findById(foreignKey);
 		if(film.isPresent()) {
