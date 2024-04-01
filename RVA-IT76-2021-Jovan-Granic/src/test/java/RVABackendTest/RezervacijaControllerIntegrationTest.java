@@ -53,7 +53,7 @@ class RezervacijaControllerIntegrationTest {
 
 	@Test
 	@Order(1)
-	void testGetAllRezervacija() {
+	void testGetAllRezervacijas() {
 		ResponseEntity<List<Rezervacija>> response = template.exchange("/rezervacija", HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Rezervacija>>() {
 				});
@@ -66,7 +66,7 @@ class RezervacijaControllerIntegrationTest {
 
 	@Test
 	@Order(2)
-	void testFindRezervacijaById() {
+	void testGetRezervacijasById() {
 		long id = 1;
 		ResponseEntity<Rezervacija> response = template.getForEntity("/rezervacija/id/" + id, Rezervacija.class);
 		int statusCode = response.getStatusCode().value();
@@ -79,7 +79,21 @@ class RezervacijaControllerIntegrationTest {
 	
 	@Test
 	@Order(3)
-	void testFindStavkaPorudzbineByCenaLessThan() {
+	
+	void testGetRezervacijasByPlaceno() {
+		boolean placeno = true;
+		ResponseEntity<List<Rezervacija>> response = template.exchange("/rezervacija/placeno/" + placeno, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<Rezervacija>>(){});
+		int statusCode = response.getStatusCode().value();
+		List<Rezervacija> rezervacijas =  response.getBody();
+		
+		assertEquals(200, statusCode );
+		assertNotNull(rezervacijas.get(0));
+	}
+	
+	@Test
+	@Order(4)
+	void testGetRezervacijasByCenaLessThan() {
 		double cena = 400;
 		ResponseEntity<List<Rezervacija>> response = template.exchange("/rezervacija/cena/" + cena, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Rezervacija>>(){});
@@ -94,7 +108,7 @@ class RezervacijaControllerIntegrationTest {
 	}
 
 	@Test
-	@Order(4)
+	@Order(5)
 	void testGetRezervacijasBySala() {
 		long salaId = 1;
 		ResponseEntity<List<Rezervacija>> response = template.exchange("/rezervacija/sala/" + salaId, HttpMethod.GET, null,
@@ -110,7 +124,7 @@ class RezervacijaControllerIntegrationTest {
 	}
 	
 	@Test
-	@Order(5)
+	@Order(6)
 	void testGetRezervacijaByFilm() {
 		long filmId = 1;
 		ResponseEntity<List<Rezervacija>> response = template.exchange("/rezervacija/film/" + filmId, HttpMethod.GET, null,
@@ -126,7 +140,7 @@ class RezervacijaControllerIntegrationTest {
 	}
 
 	@Test
-	@Order(6)
+	@Order(7)
 	void testCreateRezervacija() {
 		Rezervacija rezervacija = new Rezervacija();
 		rezervacija.setCena(1000);
@@ -153,7 +167,7 @@ class RezervacijaControllerIntegrationTest {
 	}
 
 	@Test
-	@Order(7)
+	@Order(8)
 	void testUpdateRezervacije() {
 		Rezervacija rezervacija = new Rezervacija();
 		rezervacija.setCena(2000);
@@ -172,7 +186,7 @@ class RezervacijaControllerIntegrationTest {
 	}
 
 	@Test
-	@Order(8)
+	@Order(9)
 	void testDeleteRezervacija() {
 		getHighestId();
 		ResponseEntity<String> response = template.exchange("/rezervacija/id/" + largestId, HttpMethod.DELETE, null, String.class);

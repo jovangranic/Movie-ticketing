@@ -44,7 +44,7 @@ public class SalaController {
 	}
 	
 	@GetMapping("/sala/kapacitet/{kapacitet}")
-	public ResponseEntity<?> getSalasByNaziv(@PathVariable int kapacitet){
+	public ResponseEntity<?> getSalasByKapacitet(@PathVariable int kapacitet){
 		List<Sala> sala = service.getSalasByKapacitet(kapacitet);
 		if(sala.isEmpty()) {
 			return ResponseEntity.status(404).body("Resources with kapacitet: " + kapacitet + " do not exist!");
@@ -83,7 +83,7 @@ public class SalaController {
 	}
 	
 	@GetMapping("/sala/bioskop/{foreignKey}")
-	public ResponseEntity<?> getSalasByDobavljac(@PathVariable int foreignKey){
+	public ResponseEntity<?> getSalasByBioskop(@PathVariable int foreignKey){
 		Optional<Bioskop> bioskop = bioskopService.findById(foreignKey);
 		if(bioskop.isPresent()) {
 			List<Sala> sala = service.getByForeignKey(bioskop.get());

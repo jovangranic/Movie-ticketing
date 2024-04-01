@@ -20,6 +20,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import RVA.models.Sala;
 
@@ -143,5 +144,21 @@ class SalaControllerIntegrationTest {
 		assertEquals(200, response.getStatusCode().value());
 		assertTrue(response.getBody().contains("has been deleted!"));
 	}
-
+	
+	@Test
+	@Order(7)
+	void testGetSalasByKapacitet() {
+		double kapacitet = 400;
+		ResponseEntity<List<Sala>> response = template.exchange("/sala/kapacitet/" + kapacitet, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<Sala>>(){});
+		int statusCode = response.getStatusCode().value();
+		List<Sala> salas =  response.getBody();
+		
+		assertEquals(200, statusCode );
+		assertNotNull(salas.get(0));
+		for(Sala s: salas) {
+			assertTrue(s.getKapacitet() < kapacitet);
+		}
+	}
+	
 }
