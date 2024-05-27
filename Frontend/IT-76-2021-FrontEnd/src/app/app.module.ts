@@ -77,7 +77,7 @@ import { RezervacijaDialogComponent } from './dialogs/rezervacija-dialog/rezerva
     MatSelectModule,
     MatSortModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

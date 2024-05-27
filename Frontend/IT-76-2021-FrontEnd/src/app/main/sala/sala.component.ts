@@ -25,6 +25,7 @@ export class SalaComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
+    console.log('Log sale', this.loadData)
     this.loadData();
   }
 

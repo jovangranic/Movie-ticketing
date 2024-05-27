@@ -19,7 +19,7 @@ export class RezervacijaComponent implements OnChanges{
   subscription!:Subscription;
 
   @Input() childSelectSala!:Sala;
-  constructor(private RezervacijaService: RezervacijaService,
+  constructor(private rezervacijaService: RezervacijaService,
               public dialog: MatDialog){
 
   }
@@ -33,15 +33,22 @@ export class RezervacijaComponent implements OnChanges{
   }
 
   ngOnInit(): void {
+    console.log('Selected sala:', this.childSelectSala);
     this.loadData();
   }
 
   public loadData(){
-    this.subscription = this.RezervacijaService.getRezervacijaBySala(this.childSelectSala.id).subscribe(
-      data => {this.dataSource = new MatTableDataSource(data);
-              console.log(data)}),
-      (error:Error) => {console.log(error.name + ' ' + error.message);}
+    this.subscription = this.rezervacijaService.getRezervacijaBySala(this.childSelectSala.id).subscribe(
+      data => {
+        this.dataSource = new MatTableDataSource(data);
+        console.log(data);
+      },
+      (error: Error) => {
+        console.log(error.name + ' ' + error.message);
+      }
+    );
   }
+  
 
   public openDialog(flag:number, id?:number, brojOsoba?:number, cenaKarte?:number, datum?:Date, placeno?:boolean, film?:Film ):void{
     const dialogRef = this.dialog.open(RezervacijaDialogComponent, {data:{id,brojOsoba,cenaKarte,datum,placeno,film}});

@@ -15,8 +15,8 @@ export class RezervacijaService {
     return this.httpClient.get(`${REZERVACIJA_URL}`);
   }
 
-  public getRezervacijaBySala(rezervacijaId:number):Observable<any> {
-    return this.httpClient.get(`${REZERVACIJA_BY_SALA_URL}/${rezervacijaId}`);
+  public getRezervacijaBySala(salaId:number):Observable<any> {
+    return this.httpClient.get(`${REZERVACIJA_BY_SALA_URL}/${salaId}`);
   }
 
   public addRezervacija(rezervacija:Rezervacija):Observable<any>{

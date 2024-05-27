@@ -25,11 +25,16 @@ export class RezervacijaDialogComponent {
   ){}
 
   ngOnInit(): void {
+    console.log("Ulazni podaci:", this.data); // Dodajemo ispis ulaznih podataka
     this.filmService.getAllFilms().subscribe(
       (data) => {
+        console.log("Filmovi:", data); // Dodajemo ispis podataka o filmovima
         this.filmovi = data;
+      },
+      (error) => {
+        console.error("Greška prilikom dohvatanja filmova:", error); // Dodajemo ispis greške ako dođe do problema
       }
-    )
+    );
   }
 
   public compare(a:any, b:any){
