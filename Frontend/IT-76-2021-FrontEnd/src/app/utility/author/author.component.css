@@ -1,0 +1,33 @@
+.container {
+    margin: 20px;
+  }
+  
+  .author-details {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .author-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .author-info {
+    max-width: 600px;
+  }
+  
+  .author-info h2 {
+    margin: 0;
+  }
+  
+  .author-info p {
+    margin: 10px 0;
+  }
+  
+  .title-center {
+    margin: 0 auto;
+  }
+  
