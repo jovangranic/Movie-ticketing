@@ -11,18 +11,26 @@ import { Sala } from 'src/app/models/sala';
 @Component({
   selector: 'app-rezervacija',
   templateUrl: './rezervacija.component.html',
-  styleUrls: ['./rezervacija.component.css']
+  styleUrls: ['./rezervacija.component.css'],
 })
-export class RezervacijaComponent implements OnChanges{
+export class RezervacijaComponent implements OnChanges {
   dataSource!: MatTableDataSource<Rezervacija>;
-  displayedColumns = ['id','brojOsoba', 'cenaKarte', 'datum', 'placeno', 'film', 'actions'];
-  subscription!:Subscription;
+  displayedColumns = [
+    'id',
+    'brojOsoba',
+    'cenaKarte',
+    'datum',
+    'placeno',
+    'film',
+    'actions',
+  ];
+  subscription!: Subscription;
 
-  @Input() childSelectSala!:Sala;
-  constructor(private rezervacijaService: RezervacijaService,
-              public dialog: MatDialog){
-
-  }
+  @Input() childSelectSala!: Sala;
+  constructor(
+    private rezervacijaService: RezervacijaService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.loadData();
@@ -33,33 +41,42 @@ export class RezervacijaComponent implements OnChanges{
   }
 
   ngOnInit(): void {
-    console.log('Selected sala:', this.childSelectSala);
+    // console.log('Selected sala u rezervaciji:', this.childSelectSala);
     this.loadData();
   }
 
-  public loadData(){
-    this.subscription = this.rezervacijaService.getRezervacijaBySala(this.childSelectSala.id).subscribe(
-      data => {
-        this.dataSource = new MatTableDataSource(data);
-        console.log(data);
-      },
-      (error: Error) => {
-        console.log(error.name + ' ' + error.message);
-      }
-    );
+  public loadData(): void {
+    this.subscription = this.rezervacijaService
+      .getRezervacijaBySala(this.childSelectSala.id)
+      .subscribe({
+        next: (data) => {
+          this.dataSource = new MatTableDataSource(data);
+          // console.log("PODACI" + JSON.stringify(data));
+        },
+        error: (error: Error) => {
+          console.log(error.name + ' ' + error.message);
+        },
+      });
   }
-  
 
-  public openDialog(flag:number, id?:number, brojOsoba?:number, cenaKarte?:number, datum?:Date, placeno?:boolean, film?:Film ):void{
-    const dialogRef = this.dialog.open(RezervacijaDialogComponent, {data:{id,brojOsoba,cenaKarte,datum,placeno,film}});
+  public openDialog(
+    flag: number,
+    id?: number,
+    brojOsoba?: number,
+    cenaKarte?: number,
+    datum?: Date,
+    placeno?: boolean,
+    film?: Film
+  ): void {
+    const dialogRef = this.dialog.open(RezervacijaDialogComponent, {
+      data: { id, brojOsoba, cenaKarte, datum, placeno, film },
+    });
     dialogRef.componentInstance.flag = flag;
     dialogRef.componentInstance.data.sala = this.childSelectSala;
-    dialogRef.afterClosed().subscribe(
-      result =>{
-        if(result == 1){
-          this.loadData();
-        }
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result == 1) {
+        this.loadData();
       }
-    )
+    });
   }
 }
