@@ -1,7 +1,6 @@
 package RVA.models;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -28,11 +27,11 @@ public class Sala implements Serializable{
 	private int kapacitet;
 	private int broj_redova;
 	
-	@ManyToOne // strani kljuc
+	@ManyToOne // bidirekciona veza (prvi element stranog kljuca)
 	@JoinColumn(name = "bioskop")
 	private Bioskop bioskop;
 	
-	@OneToMany(mappedBy = "sala")
+	@OneToMany(mappedBy = "sala") //bidirekciona veza (drugi element stranog kljuca)
 	@JsonIgnore
 	private List<Rezervacija> rezervacije;
 	

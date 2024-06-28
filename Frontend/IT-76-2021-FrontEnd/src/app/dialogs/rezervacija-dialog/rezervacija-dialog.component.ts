@@ -58,6 +58,7 @@ export class RezervacijaDialogComponent {
 
   public update() {
     this.service.updateRezervacija(this.data).subscribe((data) => {
+    console.log(JSON.stringify(data));
       this.snackBar.open(
         `Uspesno azurirana rezervacija sa ID: ${data.id}`,
         `U redu`,

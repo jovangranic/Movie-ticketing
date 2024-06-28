@@ -25,7 +25,7 @@ export class SalaComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log('Log sale', this.loadData);
+    // console.log('Log sale', this.loadData);
     this.loadData();
   }
 
@@ -46,11 +46,11 @@ export class SalaComponent implements OnInit, OnDestroy {
     flag: number,
     id?: number,
     kapacitet?: number,
-    brojRedova?: number,
+    broj_redova?: number,
     bioskop?: Bioskop
   ) {
     const dialogRef = this.dialog.open(SalaDialogComponent, {
-      data: { id, kapacitet, brojRedova, bioskop },
+      data: { id, kapacitet, broj_redova, bioskop },
     });
     dialogRef.componentInstance.flag = flag;
     dialogRef.afterClosed().subscribe((result) => {

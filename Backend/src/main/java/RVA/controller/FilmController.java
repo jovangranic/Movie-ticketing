@@ -81,7 +81,7 @@ public class FilmController {
 			return ResponseEntity.ok(updatedFilm);
 		} 
 		return ResponseEntity.status(404).body("Resource with requested ID: " +
-		+ id + " cannont be updated as it doesn't exist.");
+		+ id + " cannot be updated as it doesn't exist.");
 	}
 	
 	@DeleteMapping("/film/id/{id}")
@@ -92,7 +92,7 @@ public class FilmController {
 					"has been deleted.");
 		}
 		return ResponseEntity.status(404).body("Resourse with requested ID: " +
-		" cannont be deleted as it doesn't exist.");
+		" cannot be deleted as it doesn't exist.");
 				
 	}
 	

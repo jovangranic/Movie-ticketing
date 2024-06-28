@@ -1,5 +1,5 @@
 <mat-toolbar color="accent">
-  <span class="tittle-center"> Sala </span>
+  <span class="title-center">Sala</span>
 </mat-toolbar>
 
 <div class="container mat-elevation-z8">
@@ -20,7 +20,7 @@
     </ng-container>
 
     <ng-container matColumnDef="bioskop">
-      <mat-header-cell *matHeaderCellDef>bioskop</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Bioskop</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.bioskop.naziv }}</mat-cell>
     </ng-container>
 
@@ -62,10 +62,12 @@
   </mat-table>
 </div>
 
+<div class="rezervacije-container" *ngIf="parentSelectedSala">
 <div class="container mat-elevation-z8">
   <app-rezervacija
     *ngIf="parentSelectedSala"
     [childSelectSala]="parentSelectedSala"
   >
   </app-rezervacija>
+</div>
 </div>

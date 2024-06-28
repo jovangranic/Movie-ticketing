@@ -1,33 +1,62 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  background: #f0f0f0;
+  line-height: 1.6;
+}
+
 .container {
-    margin: 20px;
-  }
-  
-  .author-details {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .author-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-right: 20px;
-  }
-  
-  .author-info {
-    max-width: 600px;
-  }
-  
-  .author-info h2 {
-    margin: 0;
-  }
-  
-  .author-info p {
-    margin: 10px 0;
-  }
-  
-  .title-center {
-    margin: 0 auto;
-  }
-  
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-width: 960px;
+  border-radius: 8px;
+}
+
+.author-details {
+  margin-bottom: 20px;
+}
+
+.title-center h2 {
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #444;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.title-center p {
+  font-size: 16px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  background: #e3e3e3;
+  border-radius: 5px;
+}
+
+.title-center {
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+}
+
+a {
+  color: #bc2158;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+strong {
+  color: #333;
+  font-weight: bold;
+}

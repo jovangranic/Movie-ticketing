@@ -3,6 +3,6 @@ import { Bioskop } from "./bioskop";
 export class Sala {
     id!:number;
     kapacitet!:number;
-    brojRedova!:number;
+    broj_redova!:number;
     bioskop!:Bioskop
 }
