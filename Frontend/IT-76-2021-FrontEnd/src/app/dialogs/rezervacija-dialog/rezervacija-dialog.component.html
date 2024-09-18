@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje rezervacije</h3>
+  <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje nove rezervacije:</h3>
   <h3 mat-dialog-title *ngIf="flag == 2">Ažuriranje rezervacije: {{data.id}}</h3>
   <h3 mat-dialog-title *ngIf="flag == 3">Brisanje rezervacije: {{data.id}}</h3>
 
@@ -11,7 +11,7 @@
           placeholder="Broj osoba"
           name="Broj osoba"
           [disabled]="flag == 3"
-          [(ngModel)]="data.brojOsoba"
+          [(ngModel)]="data.broj_osoba"
           required
         />
       </mat-form-field>
@@ -24,7 +24,7 @@
           placeholder="Cena karte"
           name="Cena karte"
           [disabled]="flag == 3"
-          [(ngModel)]="data.cenaKarte"
+          [(ngModel)]="data.cena"
           required
         />
         <span matSuffix>RSD</span>

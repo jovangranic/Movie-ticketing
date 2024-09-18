@@ -19,7 +19,7 @@ public class FilmServiceImpl implements FilmService {
 	* pokretanja aplikacije IoC kontejner prolazi kroz kompletan kod tražeči anotacije
 	* koje označavaju da je potrebno kreirati objekte. Upotrebom @Autowired anotacije
 	* stavljeno je do znanja da je potrebno kreirati objekta klase koja će implementirati
-	* repozitorijum AriklRepository i proslediti klasi ArtiklRestController referencu
+	* repozitorijum FilmRepository i proslediti klasi FilmRestController referencu
 	* na taj objekat. 
 	*/
 	

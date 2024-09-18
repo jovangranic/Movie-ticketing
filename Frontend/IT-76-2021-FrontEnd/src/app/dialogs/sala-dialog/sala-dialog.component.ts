@@ -49,6 +49,7 @@ export class SalaDialogComponent implements OnInit {
 
   public update() {
     this.service.updateSala(this.data).subscribe((data) => {
+      // console.log(JSON.stringify(data));
       this.snackBar.open(
         `Sala sa ID: ${data.id} je uspešno ažurirana`,
         `U redu`,

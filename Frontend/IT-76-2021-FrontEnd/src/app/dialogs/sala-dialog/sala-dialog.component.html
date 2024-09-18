@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje sale</h3>
+  <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje nove sale:</h3>
   <h3 mat-dialog-title *ngIf="flag == 2">Ažuriranje sale: {{data.id}}</h3>
   <h3 mat-dialog-title *ngIf="flag == 3">Brisanje sale: {{data.id}}</h3>
 
@@ -24,7 +24,7 @@
           placeholder="Broj redova"
           name="Broj redova"
           [disabled]="flag == 3"
-          [(ngModel)]="data.brojRedova"
+          [(ngModel)]="data.broj_redova"
           required
         />
       </mat-form-field>

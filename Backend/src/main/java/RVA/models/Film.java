@@ -68,7 +68,7 @@ public class Film implements Serializable{
 	// bidirekciona veza (drugi element stranog kljuca)
 	@OneToMany(mappedBy = "film")
 	@JsonIgnore
-	private List<Rezervacija> filmovi;
+	private List<Rezervacija> rezervacije;
 	
 	public Film() {
 		
@@ -122,12 +122,12 @@ public class Film implements Serializable{
 		this.zanr = zanr;
 	}
 
-	public List<Rezervacija> getFilmovi() {
-		return filmovi;
+	public List<Rezervacija> getRezervacije() {
+		return rezervacije;
 	}
 
-	public void setFilmovi(List<Rezervacija> filmovi) {
-		this.filmovi = filmovi;
+	public void setRezervacije(List<Rezervacija> rezervacije) {
+		this.rezervacije = rezervacije;
 	}
 	
 	

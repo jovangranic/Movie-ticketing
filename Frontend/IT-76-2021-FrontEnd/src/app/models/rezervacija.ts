@@ -3,8 +3,8 @@ import { Sala } from "./sala";
 
 export class Rezervacija {
     id!:number;
-    brojOsoba!:number;
-    cenaKarte!:number;
+    broj_osoba!:number;
+    cena!:number;
     datum!:Date;
     placeno!:boolean;
     film!:Film;

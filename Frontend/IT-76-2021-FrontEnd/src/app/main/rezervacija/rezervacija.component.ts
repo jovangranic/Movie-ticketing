@@ -41,7 +41,6 @@ export class RezervacijaComponent implements OnChanges {
   }
 
   ngOnInit(): void {
-    // console.log('Selected sala u rezervaciji:', this.childSelectSala);
     this.loadData();
   }
 
@@ -51,7 +50,6 @@ export class RezervacijaComponent implements OnChanges {
       .subscribe({
         next: (data) => {
           this.dataSource = new MatTableDataSource(data);
-          // console.log("PODACI" + JSON.stringify(data));
         },
         error: (error: Error) => {
           console.log(error.name + ' ' + error.message);
@@ -62,14 +60,14 @@ export class RezervacijaComponent implements OnChanges {
   public openDialog(
     flag: number,
     id?: number,
-    brojOsoba?: number,
-    cenaKarte?: number,
+    broj_osoba?: number,
+    cena?: number,
     datum?: Date,
     placeno?: boolean,
     film?: Film
   ): void {
     const dialogRef = this.dialog.open(RezervacijaDialogComponent, {
-      data: { id, brojOsoba, cenaKarte, datum, placeno, film },
+      data: { id, broj_osoba, cena, datum, placeno, film },
     });
     dialogRef.componentInstance.flag = flag;
     dialogRef.componentInstance.data.sala = this.childSelectSala;
