@@ -26,6 +26,8 @@ export class FilmDialogComponent {
   }
 
   public add() {
+    this.normalizeRecenzija();
+    
     this.service.createFilm(this.data).subscribe(
       (data) => {
         this.snackBar.open(`Film sa nazivom ${data.naziv} je uspešno dodat`, "U redu", {duration:3500});
@@ -38,6 +40,8 @@ export class FilmDialogComponent {
   }
 
   public update() {
+    this.normalizeRecenzija();
+
     this.service.updateFilm(this.data).subscribe(
       (data) => {
         this.snackBar.open(`Film sa nazivom ${data.naziv} je uspešno ažuriran`, "U redu", {duration:3500})
@@ -58,6 +62,14 @@ export class FilmDialogComponent {
     (error: Error) => {
       console.log(error.name + ' ' + error.message);
       this.snackBar.open("Neuspešno brisanje!", "Zatvori", {duration:3500});
+    }
+  }
+
+  private normalizeRecenzija(): void {
+    const recenzijaValue = this.data.recenzija;
+
+    if (recenzijaValue !== null && recenzijaValue !== undefined) {
+      this.data.recenzija = parseFloat(recenzijaValue.toString().replace(',', '.'));
     }
   }
 }

@@ -7,26 +7,58 @@
     <div class="form">
       <mat-form-field>
         <input
+          type="text"
+          pattern="^[0-9]+$"
           matInput
           placeholder="Kapacitet"
           name="Kapacitet"
           [disabled]="flag == 3"
           [(ngModel)]="data.kapacitet"
+          minlength="1"
+          maxlength="4"
           required
         />
+        <mat-error *ngIf="formControl.controls['Kapacitet']?.hasError('required') && formControl.controls['Kapacitet']?.touched">
+          Kapacitet je obavezan.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Kapacitet']?.hasError('minlength') && formControl.controls['Kapacitet']?.touched">
+          Kapacitet mora da ima najmanje 1 broj.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Kapacitet']?.hasError('maxlength') && formControl.controls['Kapacitet']?.touched">
+          Kapacitet može da ima najviše 4 broja.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Kapacitet']?.hasError('pattern') && formControl.controls['Kapacitet']?.touched">
+          Kapacitet može da sadrži samo brojeve.
+        </mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field>
         <input
+          type="text"
+          pattern="^[0-9]+$"
           matInput
           placeholder="Broj redova"
           name="Broj redova"
           [disabled]="flag == 3"
           [(ngModel)]="data.broj_redova"
+          minlength="1"
+          maxlength="4"
           required
         />
+        <mat-error *ngIf="formControl.controls['Broj redova']?.hasError('required') && formControl.controls['Broj redova']?.touched">
+          Broj redova je obavezan.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Broj redova']?.hasError('minlength') && formControl.controls['Broj redova']?.touched">
+          Broj redova mora da ima najmanje 1 broj.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Broj redova']?.hasError('maxlength') && formControl.controls['Broj redova']?.touched">
+          Broj redova može da ima najviše 4 broja.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Broj redova']?.hasError('pattern') && formControl.controls['Broj redova']?.touched">
+          Broj redova može da sadrži samo brojeve.
+        </mat-error>
       </mat-form-field>
     </div>
 

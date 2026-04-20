@@ -3,24 +3,24 @@
 </mat-toolbar>
 
 <div class="container mat-elevation-z8">
-  <mat-table [dataSource]="dataSource" class="mat-cell">
+  <mat-table matSort [dataSource]="dataSource" class="mat-cell">
     <ng-container matColumnDef="kapacitet">
-      <mat-header-cell *matHeaderCellDef> Kapacitet </mat-header-cell>
+      <mat-header-cell mat-sort-header *matHeaderCellDef> Kapacitet </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{ row.kapacitet }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-header-cell mat-sort-header *matHeaderCellDef>ID</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="brojRedova">
-      <mat-header-cell *matHeaderCellDef> Broj redova </mat-header-cell>
+      <mat-header-cell mat-sort-header *matHeaderCellDef> Broj redova </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{ row.broj_redova }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="bioskop">
-      <mat-header-cell *matHeaderCellDef>Bioskop</mat-header-cell>
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Bioskop</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.bioskop.naziv }}</mat-cell>
     </ng-container>
 
@@ -60,6 +60,8 @@
       (click)="selectRow(row)"
     ></mat-row>
   </mat-table>
+
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
 </div>
 
 <div class="rezervacije-container" *ngIf="parentSelectedSala">

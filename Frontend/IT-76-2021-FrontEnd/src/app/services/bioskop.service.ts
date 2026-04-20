@@ -26,4 +26,13 @@ export class BioskopService {
   public deleteBioskop(bioskopId:number):Observable<any> {
     return this.httpClient.delete(`${BIOSKOP_URL}/id/${bioskopId}`, {responseType:"text"});
   }
+
+  public searchByNaziv(naziv: string): Observable<Bioskop[]> {
+  return this.httpClient.get<Bioskop[]>(`${BIOSKOP_URL}/naziv/${naziv}`);
+}
+
+public searchByAdresa(adresa: string): Observable<Bioskop[]> {
+  return this.httpClient.get<Bioskop[]>(`${BIOSKOP_URL}/adresa/${adresa}`);
+}
+
 }

@@ -12,12 +12,29 @@
       <mat-form-field class="form-field">
         <input
           matInput
+          type="text"
+          pattern="^[a-zA-Z0-9\s]+$"
           placeholder="Naziv"
           name="Naziv"
           [disabled]="flag == 3"
           [(ngModel)]="data.naziv"
           required
+          minlength="3"
+          maxlength="25"
+          
         />
+        <mat-error *ngIf="formControl.controls['Naziv']?.hasError('required') && formControl.controls['Naziv']?.touched">
+          Naziv je obavezan.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Naziv']?.hasError('minlength') && formControl.controls['Naziv']?.touched">
+          Naziv mora da ima najmanje 3 karaktera.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Naziv']?.hasError('maxlength') && formControl.controls['Naziv']?.touched">
+          Naziv može da ima najviše 25 karaktera.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Naziv']?.hasError('pattern') && formControl.controls['Naziv']?.touched">
+          Naziv može da sadrži samo slova i brojeve.
+        </mat-error>
       </mat-form-field>
     </div>
 
@@ -25,12 +42,28 @@
       <mat-form-field class="form-field">
         <input
           matInput
+          type="text"
+          pattern="^[a-zA-Z0-9\s]+$"
           placeholder="Adresa"
           name="Adresa"
           [disabled]="flag == 3"
           [(ngModel)]="data.adresa"
           required
+          minlength="5"
+          maxlength="25"
         />
+        <mat-error *ngIf="formControl.controls['Adresa']?.hasError('required') && formControl.controls['Adresa']?.touched">
+          Adresa je obavezna.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Adresa']?.hasError('minlength') && formControl.controls['Adresa']?.touched">
+          Adresa mora da ima najmanje 5 karaktera.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Adresa']?.hasError('maxlength') && formControl.controls['Adresa']?.touched">
+          Adresa može da ima najviše 25 karaktera.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Adresa']?.hasError('pattern') && formControl.controls['Adresa']?.touched">
+          Adresa može da sadrži samo slova, brojeve i razmake.
+        </mat-error>
       </mat-form-field>
     </div>
 

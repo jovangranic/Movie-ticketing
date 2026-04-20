@@ -34,8 +34,7 @@ export class FilmComponent implements OnInit, OnDestroy{
     this.subscription = this.service.getAllFilms().subscribe(
       (data) => {
         this.dataSource = new MatTableDataSource(data);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
+        this.bindTableFeatures();
       }
     ),
     (error:Error) => {
@@ -60,6 +59,15 @@ export class FilmComponent implements OnInit, OnDestroy{
     filter = filter.trim();
     filter = filter.toLocaleLowerCase();
     this.dataSource.filter = filter;
+  }
+
+  private bindTableFeatures(): void {
+    if (this.sort) {
+      this.dataSource.sort = this.sort;
+    }
+    if (this.paginator) {
+      this.dataSource.paginator = this.paginator;
+    }
   }
 
 }
