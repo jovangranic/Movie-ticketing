@@ -6,26 +6,97 @@
   <form class="mat-dialog-content" #formControl="ngForm">
     <div class="form">
       <mat-form-field>
-        <input matInput placeholder="Naziv" name="Naziv" [disabled]="flag==3" [(ngModel)]="data.naziv" required />
+        <input matInput
+        placeholder="Naziv"
+        name="Naziv"
+        [disabled]="flag==3"
+        [(ngModel)]="data.naziv" 
+        required
+        minlength="3"
+        maxlength="20"
+        />
+      </mat-form-field>
+      <mat-error *ngIf="formControl.controls['Naziv']?.hasError('required') && formControl.controls['Naziv']?.touched">
+          Naziv je obavezan.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Naziv']?.hasError('minlength') && formControl.controls['Naziv']?.touched">
+          Naziv mora da ima najmanje 3 karaktera.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Naziv']?.hasError('maxlength') && formControl.controls['Naziv']?.touched">
+          Naziv može da ima najviše 20 karaktera.
+        </mat-error>
+    </div>
+
+    <div class="form">
+      <mat-form-field>
+        <input matInput
+        pattern="^(?:10|[1-9](?:[.,][0-9]+)?)$"
+        placeholder="Recenzija (1-10)"
+        name="Recenzija"
+        [disabled]="flag==3"
+        [(ngModel)]="data.recenzija"
+        maxlength="3"
+        required
+        />
+        <mat-error *ngIf="formControl.controls['Recenzija']?.hasError('required') && formControl.controls['Recenzija']?.touched">
+          Recenzija je obavezna.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Recenzija']?.hasError('pattern') && formControl.controls['Recenzija']?.touched">
+          Unesite ocenu od 1 do 10. Dozvoljeni su celi brojevi (npr. 5) i decimalni (npr. 3.2 ili 5,1), ali 10 ne može biti decimalan.
+        </mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field>
-        <input matInput placeholder="Recenzija" name="Recenzija" [disabled]="flag==3" [(ngModel)]="data.recenzija" required />
+        <input matInput
+        type="text"
+        pattern="^[0-9]+$"
+        placeholder="Trajanje (u minutima)"
+        name="Trajanje"
+        [disabled]="flag==3"
+        [(ngModel)]="data.trajanje"
+        required
+        minlength="2"
+        maxlength="3" />
       </mat-form-field>
+      <mat-error *ngIf="formControl.controls['Trajanje']?.hasError('required') && formControl.controls['Trajanje']?.touched">
+          Trajanje je obavezno.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Trajanje']?.hasError('minlength') && formControl.controls['Trajanje']?.touched">
+          Trajanje mora da ima najmanje 2 broja.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Trajanje']?.hasError('maxlength') && formControl.controls['Trajanje']?.touched">
+          Trajanje može da ima najviše 3 broja.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Trajanje']?.hasError('type') && formControl.controls['Trajanje']?.touched">
+          Trajanje može da sadrži samo brojeve.
+        </mat-error>
+
     </div>
 
     <div class="form">
       <mat-form-field>
-        <input matInput placeholder="Trajanje" name="Trajanje" [disabled]="flag==3" [(ngModel)]="data.trajanje" required />
+        <input matInput
+        pattern="^[a-zA-Z\s]+$"
+        placeholder="Zanr"
+        name="Zanr"
+        [disabled]="flag==3"
+        [(ngModel)]="data.zanr"
+        required />
       </mat-form-field>
-    </div>
-
-    <div class="form">
-      <mat-form-field>
-        <input matInput placeholder="Zanr" name="Zanr" [disabled]="flag==3" [(ngModel)]="data.zanr" required />
-      </mat-form-field>
+      <mat-error *ngIf="formControl.controls['Zanr']?.hasError('required') && formControl.controls['Zanr']?.touched">
+          Zanr je obavezan.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Zanr']?.hasError('minlength') && formControl.controls['Zanr']?.touched">
+          Zanr mora da ima najmanje 3 karaktera.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Zanr']?.hasError('maxlength') && formControl.controls['Zanr']?.touched">
+          Zanr može da ima najviše 20 karaktera.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Zanr']?.hasError('pattern') && formControl.controls['Zanr']?.touched">
+          Zanr može da sadrži samo slova i razmake.
+        </mat-error>
     </div>
   </form>
 

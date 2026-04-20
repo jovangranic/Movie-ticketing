@@ -1,5 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { SalaDialogComponent } from 'src/app/dialogs/sala-dialog/sala-dialog.component';
@@ -17,6 +19,8 @@ export class SalaComponent implements OnInit, OnDestroy {
   dataSource!: MatTableDataSource<Sala>;
   subscription!: Subscription;
   parentSelectedSala!: Sala;
+  @ViewChild(MatSort, { static: false }) sort!: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
 
   constructor(private service: SalaService, public dialog: MatDialog) {}
 
@@ -36,6 +40,7 @@ export class SalaComponent implements OnInit, OnDestroy {
   public loadData() {
     (this.subscription = this.service.getAllSalas().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
+      this.bindTableFeatures();
     })),
       (error: Error) => {
         console.log(error.name + ' ' + error.message);
@@ -58,5 +63,14 @@ export class SalaComponent implements OnInit, OnDestroy {
         this.loadData();
       }
     });
+  }
+
+  private bindTableFeatures(): void {
+    if (this.sort) {
+      this.dataSource.sort = this.sort;
+    }
+    if (this.paginator) {
+      this.dataSource.paginator = this.paginator;
+    }
   }
 }

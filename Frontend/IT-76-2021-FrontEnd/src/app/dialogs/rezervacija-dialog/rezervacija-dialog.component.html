@@ -7,26 +7,46 @@
     <div class="form">
       <mat-form-field class="form-field">
         <input
+          type="text"
+          pattern="^[0-9]+$"
           matInput
-          placeholder="Broj osoba"
+          placeholder="Broj osoba (1-99)"
           name="Broj osoba"
           [disabled]="flag == 3"
           [(ngModel)]="data.broj_osoba"
+          minlength="1"
+          maxlength="2"
           required
         />
+        <mat-error *ngIf="formControl.controls['Broj osoba']?.hasError('required') && formControl.controls['Broj osoba']?.touched">
+          Broj osoba je obavezan.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Broj osoba']?.hasError('pattern') && formControl.controls['Broj osoba']?.touched">
+          Broj osoba može da sadrži samo brojeve.
+        </mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field>
         <input
+          type="text"
+          pattern="^[0-9]+$"
           matInput
-          placeholder="Cena karte"
+          placeholder="Cena (100-99999)"
           name="Cena karte"
           [disabled]="flag == 3"
           [(ngModel)]="data.cena"
+          minlength="3"
+          maxlength="5"
           required
         />
+        <mat-error *ngIf="formControl.controls['Cena karte']?.hasError('required') && formControl.controls['Cena karte']?.touched">
+          Cena karte je obavezna.
+        </mat-error>
+        <mat-error *ngIf="formControl.controls['Cena karte']?.hasError('pattern') && formControl.controls['Cena karte']?.touched">
+          Cena karte može da sadrži samo brojeve.
+        </mat-error>
         <span matSuffix>RSD</span>
       </mat-form-field>
     </div>
@@ -42,15 +62,21 @@
           [(ngModel)]="data.datum"
           required
         />
+        <mat-error *ngIf="formControl.controls['Datum']?.hasError('required') && formControl.controls['Datum']?.touched">
+          Datum je obavezan.
+        </mat-error>
         <mat-datepicker-toggle matSuffix [for]="datum"></mat-datepicker-toggle>
         <mat-datepicker #datum></mat-datepicker>
       </mat-form-field>
     </div>
 
     <div class="form">
-      <mat-checkbox name="Placeno" [disabled]="flag == 3" [(ngModel)]="data.placeno">
+      <mat-checkbox name="Placeno" [disabled]="flag == 3" [(ngModel)]="data.placeno" required>
         Plaćeno
       </mat-checkbox>
+      <mat-error *ngIf="formControl.controls['Placeno']?.hasError('required') && formControl.controls['Placeno']?.touched">
+          Polje je obavezno.
+        </mat-error>
     </div>
 
     <div class="form">
@@ -63,6 +89,9 @@
           [(ngModel)]="data.film"
           required
         >
+        <mat-error *ngIf="formControl.controls['Film']?.hasError('required') && formControl.controls['Film']?.touched">
+          Film je obavezan.
+        </mat-error>
           <mat-option *ngFor="let film of filmovi" [value]="film">
             {{ film.naziv }}
           </mat-option>
