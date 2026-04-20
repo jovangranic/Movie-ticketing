@@ -61,7 +61,7 @@ public class Film implements Serializable{
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FILM_SEQ_GENERATOR")
 	private int id;
 	private String naziv;
-	private int recenzija;
+	private float recenzija;
 	private int trajanje;
 	private String zanr;
 	
@@ -74,7 +74,7 @@ public class Film implements Serializable{
 		
 	}
 	
-	public Film(int id, String naziv, int recenzija, int trajanje, String zanr) {
+	public Film(int id, String naziv, float recenzija, int trajanje, String zanr) {
 		this.id = id;
 		this.naziv = naziv;
 		this.recenzija = recenzija;
@@ -82,11 +82,11 @@ public class Film implements Serializable{
 		this.zanr = zanr;
 	}
 
-	public int getRecenzija() {
+	public float getRecenzija() {
 		return recenzija;
 	}
 
-	public void setRecenzija(int recenzija) {
+	public void setRecenzija(float recenzija) {
 		this.recenzija = recenzija;
 	}
 

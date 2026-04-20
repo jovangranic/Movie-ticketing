@@ -70,6 +70,10 @@ public class Sala implements Serializable{
 		this.broj_redova = broj_redova;
 	}
 
+	public List<Rezervacija> getRezervacije() {
+		return rezervacije;
+	}	
+	
 	public void setRezervacije(List<Rezervacija> rezervacije) {
 		this.rezervacije = rezervacije;
 	}
@@ -81,9 +85,4 @@ public class Sala implements Serializable{
 	public void setBioskop(Bioskop bioskop) {
 		this.bioskop = bioskop;
 	}
-
-	public List<Rezervacija> getRezervacije() {
-		return rezervacije;
-	}	
-	
 }

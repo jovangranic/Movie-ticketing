@@ -9,5 +9,5 @@ import RVA.models.Bioskop;
 @Service
 public interface BioskopService extends CrudService<Bioskop>{
 	List<Bioskop> getBioskopsByAdresa(String adresa);
-
+	List<Bioskop> getBioskopsByNaziv(String naziv);
 }

@@ -11,4 +11,5 @@ public interface SalaRepository extends JpaRepository<Sala, Integer>{
 
 	List<Sala> findSalasByKapacitet(int kapacitet);
 	List<Sala> findByBioskop (Bioskop bioskop);
+
 }

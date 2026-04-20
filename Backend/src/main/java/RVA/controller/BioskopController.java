@@ -50,6 +50,15 @@ public class BioskopController {
 		return ResponseEntity.ok(bioskop);
 	}
 	
+	@GetMapping("/bioskop/naziv/{naziv}")
+	public ResponseEntity<?> getByNaziv(@PathVariable String naziv){
+	    List<Bioskop> lista = service.getBioskopsByNaziv(naziv);
+	    if(lista.isEmpty()){
+	        return ResponseEntity.status(404).body("Resources with Naziv: " + naziv + " do not exist!");
+	    }
+	    return ResponseEntity.ok(lista);
+	}
+	
 	@PostMapping("/bioskop")
 	public ResponseEntity<?> createBioskop(@RequestBody Bioskop bioskop){
 		if(service.existsById(bioskop.getId())) {

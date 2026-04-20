@@ -9,4 +9,5 @@ import RVA.models.Bioskop;
 public interface BioskopRepository extends JpaRepository<Bioskop, Integer>{
 
 	List<Bioskop> findByAdresaContainingIgnoreCase(String adresa);
+	List<Bioskop> findByNazivContainingIgnoreCase(String adresa);
 }

@@ -92,7 +92,7 @@ public class SalaController {
 			if(sala.isEmpty()) {
 				return ResponseEntity.status(404).body("Resources with foreign key: " + foreignKey
 						+ " do not exist!");
-			}else {
+			} else {
 				return ResponseEntity.ok(sala);
 			}
 		}

@@ -45,6 +45,11 @@ public class BioskopServiceImpl implements BioskopService {
 		repo.deleteById(id);
 
 	}
+	
+	@Override
+	public Optional<Bioskop> findById(int id) {
+		return repo.findById(id);
+	}
 
 	@Override
 	public List<Bioskop> getBioskopsByAdresa(String adresa) {
@@ -52,8 +57,8 @@ public class BioskopServiceImpl implements BioskopService {
 	}
 
 	@Override
-	public Optional<Bioskop> findById(int id) {
-		return repo.findById(id);
+	public List<Bioskop> getBioskopsByNaziv(String naziv) {
+		return repo.findByNazivContainingIgnoreCase(naziv);
 	}
 
 }
